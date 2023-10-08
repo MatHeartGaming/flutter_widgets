@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:widgets_app/config/menu/menu_items.dart';
+import 'package:widgets_app/presentation/screens/buttons/button_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -45,10 +47,16 @@ class _CustomListTile extends StatelessWidget {
     return ListTile(
       title: Text(menuItem.title),
       subtitle: Text(menuItem.subtitle),
-      leading: Icon(menuItem.icon, color: color.primary,),
-      trailing: Icon(Icons.arrow_forward_ios_rounded, color: color.primary,),
+      leading: Icon(
+        menuItem.icon,
+        color: color.primary,
+      ),
+      trailing: Icon(
+        Icons.arrow_forward_ios_rounded,
+        color: color.primary,
+      ),
       onTap: () {
-        // TODO: Navegar a otra pantalla
+        Navigator.of(context).pushNamed(menuItem.link);
       },
     );
   }
