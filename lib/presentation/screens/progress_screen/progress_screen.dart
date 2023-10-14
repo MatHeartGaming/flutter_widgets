@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:widgets_app/presentation/widgets/shared/shared_common_widgets.dart';
 
 class ProgressScreen extends StatelessWidget {
   static const name = "ProgressScreen";
@@ -38,13 +38,11 @@ class _ProgressView extends StatelessWidget {
             backgroundColor: Colors.black45,
           ),
 
-          Divider(),
-          SizedBox(
-            height: 20,
-          ),
-
-          Text("Progress Indicator Circular y Linear Controlado"),
+          SeparatorBetweenWidgets(text: "Progress Indicator Circular y Linear Controlado"),
           _ControlledProgressIndicator(),
+
+          SeparatorBetweenWidgets(text: "Progress Indicator Adaptivo en base al SO"),
+          CircularProgressIndicator.adaptive(),
         ],
       ),
     );

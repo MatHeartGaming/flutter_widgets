@@ -1,0 +1,3 @@
+
+const String dialogMockText =
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio vel lectus iaculis maximus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum lacinia ligula ut urna tempor posuere. Mauris vel pellentesque felis, ut placerat mi. Duis ante mauris, porta vitae nunc ac, aliquam sagittis leo. Proin non aliquet est. In vel lectus elementum, scelerisque libero finibus, dictum tortor. Ut semper mauris a neque pellentesque tempus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer dignissim, magna nec bibendum lobortis, orci arcu pharetra felis, quis lobortis ex est a urna.";
