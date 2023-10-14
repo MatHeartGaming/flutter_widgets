@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:widgets_app/presentation/widgets/buttons/custom_buttons.dart';
 
 class ButtonsScreen extends StatelessWidget {
@@ -10,7 +11,10 @@ class ButtonsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          //Navigator.pop(context);
+          context.pop();
+        },
         child: const Icon(Icons.arrow_back_ios_new),
       ),
       appBar: AppBar(
@@ -76,22 +80,18 @@ class _ButtonsView extends StatelessWidget {
                 onPressed: () {},
                 icon: const Icon(Icons.app_registration_outlined)),
             IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.app_registration_outlined),
-              style: ButtonStyle(
-                backgroundColor: MaterialStatePropertyAll(colorScheme.primary),
-                iconColor: const MaterialStatePropertyAll(Colors.white))
-              ),
+                onPressed: () {},
+                icon: const Icon(Icons.app_registration_outlined),
+                style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStatePropertyAll(colorScheme.primary),
+                    iconColor: const MaterialStatePropertyAll(Colors.white))),
 
-
-              // Custom Buttons
-              const CustomButton(),
-
+            // Custom Buttons
+            const CustomButton(),
           ],
         ),
       ),
     );
   }
 }
-
-
