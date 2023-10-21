@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  final List<Color> colorList = [
+  static final List<Color> colorList = [
     Colors.blue,
     Colors.yellow,
     Colors.teal,
@@ -12,14 +12,15 @@ class AppTheme {
     Colors.cyan,
   ];
   final int selectedColor;
+  final bool isDarkMode;
 
-  AppTheme({this.selectedColor = 0});
+  AppTheme({this.selectedColor = 0, this.isDarkMode = false});
 
   ThemeData getTheme() => ThemeData(
-        useMaterial3: true,
-        colorSchemeSeed: colorList[selectedColor % colorList.length],
-        appBarTheme: const AppBarTheme(
-          centerTitle: true,
-        )
-      );
+      useMaterial3: true,
+      brightness: isDarkMode ? Brightness.dark : Brightness.light,
+      colorSchemeSeed: colorList[selectedColor % colorList.length],
+      appBarTheme: const AppBarTheme(
+        centerTitle: true,
+      ));
 }
