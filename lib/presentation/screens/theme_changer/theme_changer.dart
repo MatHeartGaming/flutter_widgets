@@ -9,15 +9,16 @@ class ThemeChangerScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    bool isDarkMode = ref.watch(darkModeProvider);
+    bool isDarkMode = ref.watch(themeNotifierProvider).isDarkMode;
     return Scaffold(
       appBar: AppBar(
         title: const Text("Theme Changer"),
         actions: [
           IconButton(
               onPressed: () {
-                bool isDarkMode = ref.read(darkModeProvider.notifier).state;
-                ref.watch(darkModeProvider.notifier).state = !isDarkMode;
+                //bool isDarkMode = ref.read(darkModeProvider.notifier).state;
+                //ref.watch(darkModeProvider.notifier).state = !isDarkMode;
+                ref.read(themeNotifierProvider.notifier).toggleDarkmode();
               },
               icon: Icon(isDarkMode
                   ? Icons.dark_mode_outlined
@@ -35,28 +36,25 @@ class _ThemeChangerView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     List<Color> colors = ref.watch(colorListProvider);
-    int selectedcColorIndex = ref.watch(selectedColorSeedProvider);
+    int selectedcColorIndex = ref.watch(themeNotifierProvider).selectedColor;
     return ListView.builder(
         itemCount: colors.length,
         itemBuilder: (context, index) {
           final color = colors[index];
           return RadioListTile.adaptive(
-              title: const Text(
-                "Este color",
-                style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
-              ),
-              subtitle: Text("${color.value}"),
-              activeColor: color.withAlpha(100),
-              tileColor: color,
-              value: index,
-              groupValue: selectedcColorIndex,
-              onChanged: (newIndex) => ref.read(selectedColorSeedProvider.notifier)
-                          .state = newIndex!,
-              
-
-              
-            );
+            title: const Text(
+              "Este color",
+              style:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
+            ),
+            subtitle: Text("${color.value}"),
+            activeColor: color.withAlpha(100),
+            tileColor: color,
+            value: index,
+            groupValue: selectedcColorIndex,
+            onChanged: (newIndex) => ref.read(themeNotifierProvider.notifier).changeColorIndex(newIndex!),
+                //ref.read(selectedColorSeedProvider.notifier).state = newIndex!,
+          );
         });
   }
 }

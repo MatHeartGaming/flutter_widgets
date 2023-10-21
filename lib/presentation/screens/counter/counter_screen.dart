@@ -11,7 +11,7 @@ class CounterScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     int clickCounter = ref.watch(counterProvider);
-    bool isDarkMode = ref.watch(darkModeProvider);
+    bool isDarkMode = ref.watch(themeNotifierProvider).isDarkMode;
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -24,8 +24,9 @@ class CounterScreen extends ConsumerWidget {
         actions: [
           IconButton(
               onPressed: () {
-                bool isDarkMode = ref.read(darkModeProvider.notifier).state;
-                ref.watch(darkModeProvider.notifier).state = !isDarkMode;
+                //bool isDarkMode = ref.read(darkModeProvider.notifier).state;
+                //ref.watch(darkModeProvider.notifier).state = !isDarkMode;
+                ref.read(themeNotifierProvider.notifier).toggleDarkmode();
               },
               icon: Icon(isDarkMode
                   ? Icons.dark_mode_outlined

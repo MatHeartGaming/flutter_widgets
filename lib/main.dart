@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:widgets_app/config/router/app_router.dart';
-import 'package:widgets_app/config/themes/app_theme.dart';
 import 'package:widgets_app/presentation/providers/theme_provider.dart';
 
 void main() {
@@ -15,15 +14,17 @@ class MainApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    int selectedColorIndex = ref.watch(selectedColorSeedProvider);
-    bool isDarkMode = ref.watch(darkModeProvider);
+    //int selectedColorIndex = ref.watch(selectedColorSeedProvider);
+    //bool isDarkMode = ref.watch(darkModeProvider);
+    final appTheme = ref.watch(themeNotifierProvider);
     return MaterialApp.router(
       title: "Flutter Widgets",
       debugShowCheckedModeBanner: false,
-      theme: AppTheme(
+      /*theme: AppTheme(
         selectedColor: selectedColorIndex,
         isDarkMode: isDarkMode,
-      ).getTheme(),
+      ).getTheme(),*/
+      theme: appTheme.getTheme(),
       routerConfig: appRouter,
     );
   }
